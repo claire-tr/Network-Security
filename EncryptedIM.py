@@ -9,13 +9,13 @@ import os
 confkey = ''
 authkey = ''
 def server():
-  server=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+  server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 	server.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-	port=9999
+	port = 9999
 	server.bind(('',port))
 	server.listen(5)
 	csock,caddr = server.accept()## new socket for client
-	inputs=[server,csock,sys.stdin]
+	inputs = [server,csock,sys.stdin]
 	while 1:
 		rs,ws,es=select.select(inputs,[],[],1)
 		for r in rs:
@@ -134,18 +134,18 @@ def Decrypt(confkey, iv, encrypted):
 	return buffer
 
 flag = 0	
-if len(sys.argv)<5:
+if len(sys.argv) < 5:
 	print 'invalid input, please try again.'
 	sys.exit(0)
 
-if sys.argv[1]=='-s':
+if sys.argv[1] == '-s':
 	if sys.argv[2] == '-confkey':
 		confkey = sys.argv[3]
 		if sys.argv[4] == '-authkey':
 			authkey = sys.argv[5]
 			flag = 1
 		        server()
-if sys.argv[1]=='-c':
+if sys.argv[1] == '-c':
         hostname = sys.argv[2]
 	if sys.argv[3] == '-confkey':
         	confkey = sys.argv[4]
