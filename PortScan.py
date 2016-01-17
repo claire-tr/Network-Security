@@ -1,7 +1,7 @@
 import sys,socket,datetime,random,time
-count=0
+count = 0
 
-if len(sys.argv)!=2:
+if len(sys.argv) != 2:
         print "Invalid Input"
         sys.exit(0)
 else:
