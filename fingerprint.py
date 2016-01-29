@@ -35,7 +35,7 @@ def train():
 					pre_time = ptime
 					out = True
 					incoming = False
-				if dport==443:
+				if dport == 443:
 					incomingcount += 1
 		                	avg_len_incoming += len(tcp.data)
                                         avg_len_outgoing += len(tcp.data)
@@ -73,7 +73,7 @@ def train():
 
 			trainset[example_count] = temp
 			classlabel.append(i+1)
-			example_count+=1
+			example_count += 1
 	a = np.array(trainset)
 	a /= np.max(np.abs(a),axis=0)
 	b = np.array(classlabel)
@@ -104,7 +104,7 @@ def predict(filename):
                 tcp = ip.data
                 sport = tcp.sport
                 dport = tcp.dport
-                if sport==443:
+                if sport == 443:
                 	outgoingcount += 1
                         avg_len_outgoing += len(tcp.data)
                         if(outgoing):
@@ -125,17 +125,17 @@ def predict(filename):
                         pre_time = ptime
                         out = False
                         incoming = True
-	if(incomingcount != 0 and outgoingcount!=0):
+	if (incomingcount != 0 and outgoingcount != 0):
                                 #avg_space_out = avg_space_out/outgoingcount
                                 #avg_space_in = avg_space_in/incomingcount
 	        avg_len_incoming = avg_len_incoming/incomingcount
                 avg_len_outgoing = avg_len_outgoing/outgoingcount
-        elif(outgoingcount!=0):
+        elif (outgoingcount != 0):
                                 #avg_space_out = avg_space_out/outgoingcount
                 avg_space_in = 0
                 avg_len_incoming = 0
                 avg_len_outgoing = avg_len_ougoing/outgoingcount
-        elif(incomingcount!= 0):
+        elif (incomingcount!= 0):
                 avg_space_out = 0
                                 #avg_space_in = avg_space_in/incomingcount
                 avg_len_incoming = avg_len_incoming/incomingcount
